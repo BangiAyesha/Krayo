@@ -10,7 +10,7 @@ export default function Dashboard() {
     const displayName = token?.displayName;
     const [ip, setIp] = useState("");
     const [ipData, setIpData] = useState([]);
-    const [text, setText] = useState("Welcome");
+    const [text, setText] = useState("");
     const [country, setCountry] = useState("");
     const [countryDetails, setCountryDetails] = useState([]);
 
