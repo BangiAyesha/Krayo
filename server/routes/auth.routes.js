@@ -1,21 +1,11 @@
 const express = require("express");
-const router = express.Router();
 const passport = require("passport");
-const ip = require("ip");
-const ipAddress = {};
+const router = express.Router();
+const authController = require("../controllers/auth.controller");
 
-router.get("/login/success", (req, res) => {
-    ipAddress["data"] = ip.address();
-    if (req.user) {
-        res.json({ error: false, message: "Login Success", user: req.user });
-    } else {
-        res.json({ error: true, message: "Login fail" });
-    }
-});
+router.get("/login/success", authController.loginSuccess);
 
-router.get("/login/failed", (req, res) => {
-    res.json({ error: true, message: "Login failed" });
-});
+router.get("/login/failed", authController.loginFail);
 
 router.get(
     "/google",
@@ -31,13 +21,6 @@ router.get(
     })
 );
 
-router.get("/logout", (req, res) => {
-    req.logOut();
-    res.clearCookie("connect.sid", {
-        path: process.env.CLIENT_URL,
-    });
-    req.session = null;
-    res.redirect(process.env.CLIENT_URL);
-});
+router.get("/logout", authController.logout);
 
-module.exports = { router, ipAddress };
+module.exports = router;

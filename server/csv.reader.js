@@ -22,13 +22,11 @@ const readCSV = async () => {
         });
     });
 };
-readCSV();
 
 const getCountry = async () => {
     await axios.get("https://restcountries.com/v2/all").then((response) => {
         countryDetails["data"] = response.data;
     });
 };
-// getCountry();
 
-module.exports = { ipToCountryMap, countryDetails, getCountry };
+module.exports = { ipToCountryMap, countryDetails, getCountry, readCSV };

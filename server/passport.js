@@ -9,8 +9,16 @@ passport.use(
             callbackURL: "/api/auth/google/callback",
             scope: ["profile", "email"],
         },
-        (accessToken, refreshToken, profile, callback) => {
-            callback(null, profile);
+        // (accessToken, refreshToken, profile, callback) => {
+        //     callback(null, profile);
+        // }
+        function (accessToken, refreshToken, profile, done) {
+            var userData = {
+                email: profile.emails[0].value,
+                name: profile.displayName,
+                token: accessToken,
+            };
+            done(null, userData);
         }
     )
 );

@@ -1,6 +1,4 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Papa from "papaparse";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { greetUser } from "../config/dataService";
@@ -18,9 +16,11 @@ export default function Dashboard() {
     }, [token]);
 
     useEffect(() => {
-        greetUser().then((response) => {
-            setText(response.data);
-        });
+        if (token) {
+            greetUser().then((response) => {
+                setText(response.data);
+            });
+        }
     }, []);
 
     const handleLogout = () => {
