@@ -5,10 +5,11 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const cookieSession = require("cookie-session");
-const authRoutes = require("./routes/auth.routes");
+require("./csv.reader");
+const { router } = require("./routes/auth.routes");
+const dataRoutes = require("./routes/data.routes");
 require("./passport");
 const passport = require("passport");
-
 const PORT = process.env.PORT || 5000;
 
 app.use(
@@ -31,7 +32,16 @@ app.use(passport.session());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/api/auth", authRoutes);
+app.use("/api/auth", router);
+app.use("/api/data", dataRoutes);
+
+// app.use("/", (req, res) => {
+//     countryDetails?.data?.map((abc) => {
+//         if ("India" == abc.name) {
+//             res.send(abc.languages[0].iso639_1);
+//         }
+//     });
+// });
 
 app.listen(PORT, (error) => {
     if (error) console.log(error);

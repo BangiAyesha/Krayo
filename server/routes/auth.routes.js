@@ -1,8 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
+const ip = require("ip");
+const ipAddress = {};
 
 router.get("/login/success", (req, res) => {
+    ipAddress["data"] = ip.address();
     if (req.user) {
         res.json({ error: false, message: "Login Success", user: req.user });
     } else {
@@ -37,4 +40,4 @@ router.get("/logout", (req, res) => {
     res.redirect(process.env.CLIENT_URL);
 });
 
-module.exports = router;
+module.exports = { router, ipAddress };
