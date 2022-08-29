@@ -1,3 +1,4 @@
+const jwt = require("jsonwebtoken");
 const ipAddress = {};
 
 const loginSuccess = (req, res) => {
@@ -7,7 +8,10 @@ const loginSuccess = (req, res) => {
         req.socket.remoteAddress ||
         req.connection.socket.remoteAddress;
     if (req.user) {
-        res.json({ error: false, message: "Login Success", user: req.user });
+        const token = jwt.sign(req.user, process.env.JWT_SECRET, {
+            expiresIn: 1060000,
+        });
+        res.json({ error: false, message: "Login Success", user: token });
     } else {
         res.status(400).json({ error: true, message: "Login fail" });
     }

@@ -2,12 +2,18 @@ import React, { useEffect, useState } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { greetUser } from "../config/dataService";
+import jwt_decode from "jwt-decode";
 
 export default function Dashboard() {
     const navigate = useNavigate();
-    let token = JSON.parse(localStorage?.getItem("_token"));
-    const displayName = token?.displayName;
     const [text, setText] = useState("");
+
+    let token = JSON.parse(localStorage?.getItem("_token"));
+    let displayName;
+    if (token) {
+        const decode = jwt_decode(token);
+        displayName = decode.name;
+    }
 
     useEffect(() => {
         if (!token) {

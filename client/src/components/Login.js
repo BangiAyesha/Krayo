@@ -17,6 +17,7 @@ export default function Login() {
             `${process.env.REACT_APP_SERVER_URL}auth/google/callback`,
             "_self"
         );
+        localStorage.setItem("checklogin", "true");
     };
     const getUser = async () => {
         try {
@@ -35,9 +36,12 @@ export default function Login() {
         } catch (err) {
             console.log(err);
         }
+        localStorage.removeItem("checklogin");
     };
     useEffect(() => {
-        getUser();
+        if (localStorage.getItem("checklogin")) {
+            getUser();
+        }
     }, []);
 
     return (
