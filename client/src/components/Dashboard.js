@@ -31,7 +31,7 @@ export default function Dashboard() {
 
     const handleLogout = () => {
         localStorage.removeItem("_token");
-        window.open(`${process.env.REACT_APP_SERVER_URL}auth/logout`, "_self");
+        window.open(`/api/auth/logout`, "_self");
     };
 
     return (
