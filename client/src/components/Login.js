@@ -42,9 +42,30 @@ export default function Login() {
     }, []);
 
     return (
-        <div>
-            <Container className="text-center">
-                <Button variant="dark" onClick={handleLogin}>
+        <div
+            className="text-center text-light"
+            style={{
+                backgroundImage: `url("/login.jpg")`,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+                minHeight: "100vh",
+            }}
+        >
+            <Container>
+                <br />
+                <br />
+                <h2 className="text-light">Welcome to Krayo..!!</h2>
+                <hr />
+                <Button
+                    size="lg"
+                    variant="inherit"
+                    style={{
+                        color: "white",
+                        borderColor: "white",
+                        borderRadius: "20px",
+                    }}
+                    onClick={handleLogin}
+                >
                     Login With Google
                 </Button>
             </Container>

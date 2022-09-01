@@ -35,21 +35,31 @@ export default function Dashboard() {
     };
 
     return (
-        <div>
+        <div
+            style={{
+                backgroundImage: `url("/dashboard.jpg")`,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+                minHeight: "100vh",
+            }}
+        >
             <Navbar bg="dark" variant="dark">
                 <Container>
                     <Navbar.Brand href="#home">
                         Greetings {displayName ? `${displayName}` : ""}
                     </Navbar.Brand>
                     <Nav>
-                        <Nav.Link onClick={() => handleLogout()}>
+                        <Nav.Link
+                            style={{ color: "white" }}
+                            onClick={() => handleLogout()}
+                        >
                             Logout
                         </Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>
             <br />
-            <Container>{text}</Container>
+            <h1 className="text-center">{text}</h1>
         </div>
     );
 }
