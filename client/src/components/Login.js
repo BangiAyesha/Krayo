@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { CheckUser } from "../config/userService";
 import { useNavigate } from "react-router-dom";
 import { Button, Container } from "react-bootstrap";
+import "../css/login.css";
 
 export default function Login() {
     const navigate = useNavigate();
@@ -42,32 +43,27 @@ export default function Login() {
     }, []);
 
     return (
-        <div
-            className="text-center text-light"
-            style={{
-                backgroundImage: `url("/login.jpg")`,
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-                minHeight: "100vh",
-            }}
-        >
+        <div className="text-center text-light background-img">
             <Container>
                 <br />
                 <br />
                 <h2 className="text-light">Welcome to Krayo..!!</h2>
                 <hr />
-                <Button
-                    size="lg"
-                    variant="inherit"
-                    style={{
-                        color: "white",
-                        borderColor: "white",
-                        borderRadius: "20px",
-                    }}
-                    onClick={handleLogin}
-                >
-                    Login With Google
-                </Button>
+
+                <div className="text">
+                    <Button
+                        size="lg"
+                        variant="inherit"
+                        style={{
+                            color: "white",
+                            borderColor: "white",
+                            borderRadius: "20px",
+                        }}
+                        onClick={handleLogin}
+                    >
+                        Login With Google
+                    </Button>
+                </div>
             </Container>
         </div>
     );

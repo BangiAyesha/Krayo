@@ -3,6 +3,7 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { greetUser } from "../config/dataService";
 import jwt_decode from "jwt-decode";
+import "../css/dashboard.css";
 
 export default function Dashboard() {
     const navigate = useNavigate();
@@ -35,14 +36,7 @@ export default function Dashboard() {
     };
 
     return (
-        <div
-            style={{
-                backgroundImage: `url("/dashboard.jpg")`,
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-                minHeight: "100vh",
-            }}
-        >
+        <div className="background-img1">
             <Navbar bg="dark" variant="dark">
                 <Container>
                     <Navbar.Brand href="#home">
@@ -59,7 +53,7 @@ export default function Dashboard() {
                 </Container>
             </Navbar>
             <br />
-            <h1 className="text-center">{text}</h1>
+            <h1 className="text-center text">{text}</h1>
         </div>
     );
 }

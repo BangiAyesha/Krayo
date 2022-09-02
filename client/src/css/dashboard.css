@@ -1,0 +1,33 @@
+.background-img1 {
+    background-image: url("/public/dashboard.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+@media screen and (max-width: 1020px) {
+    .background-img1 {
+        background-image: url("/public/dashboard.jpg");
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+}
+
+@media screen and (max-width: 810px) {
+    .background-img1 {
+        background-image: url("/public/dashboard.jpg");
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+}
+
+@media screen and (max-width: 510px) {
+    .background-img1 {
+        background-image: url("/public/dashboard.jpg");
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    .text {
+        margin-top: 20vh;
+    }
+}
